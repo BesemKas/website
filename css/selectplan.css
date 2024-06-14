@@ -1,0 +1,115 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  background: #d4d3d3;
+  background: url("../Media/carwashbanner.jpeg") no-repeat center / cover;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.options__wrapper {
+  padding: 3rem 0;
+  margin-bottom: 10vh;
+}
+.details {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 3rem 0;
+  color: #000000;
+  font-size: 1.2rem;
+  text-shadow: #131313;
+  font-weight: bold;
+}
+
+.details h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.options__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.3rem 0.9rem;
+  padding: 1.25rem;
+  min-height: 450px;
+}
+
+.option {
+  width: 16rem;
+  height: 25rem;
+  border: 1px solid #eee;
+  outline: none;
+  text-align: center;
+  padding: 1.25rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 5px;
+  align-items: center;
+  position: relative;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.price {
+  margin-bottom: 20px;
+}
+.price #value {
+  font-weight: bold;
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: -5px;
+}
+
+.benefits > * {
+  color: #555;
+  padding: 8px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.option .button button {
+  position: absolute;
+  width: 80%;
+  margin: 25px 0 0;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: #64b454;
+  font-weight: 600;
+  cursor: pointer;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.option .button:hover {
+  opacity: 90%;
+}
+
+.option:hover {
+  transform: scale(1.2);
+  z-index: 2;
+  .price #value {
+    transform: scale(1.2);
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 804px) {
+  .options__container {
+    gap: 20px;
+  }
+}

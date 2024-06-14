@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#main__container {
+  background: url("../Media/carwashbanner.jpeg") no-repeat center / cover;
+  padding-bottom: 20vh;
+  min-height: 100vh;
+}
+
+#main__container h1 {
+  font-size: 4em;
+  margin-left: 5vw;
+}
+
+#account__container {
+  height: auto;
+}
+
+#nav-tab button {
+  background-color: #d4d3d3;
+  border: 1px solid black;
+}
+#nav-tab {
+  border: none;
+}
+
+#nav-tab button[aria-selected="true"] {
+  color: #64b454;
+}
+
+#nav-tabContent {
+  background-color: #d4d3d3;
+  border-radius: 0 30px 30px 30px;
+  border: 1px solid black;
+  padding: 0 8%;
+}
+
+#nav-tabContent h2 {
+  border-bottom: 1px solid #b8b8b8;
+  padding-bottom: 2vh;
+  font-size: 3em;
+}
+.PName {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 12px;
+}
+.PValue {
+  font-size: 1.2em;
+}
+
+#nav-profile button,
+#nav-membership button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* membership */
+
+/* cars */
+#car__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  height: auto;
+  background-color: #d4d3d3;
+  padding: 5vh 7vw;
+}
+.car {
+  border: 1px solid #dee2e6;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+}
+.car h3 {
+  color: #495057;
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+.car img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.car p {
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+.car button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.car button:hover {
+  background-color: #0056b3;
+}
+
+#Addbtn {
+  border-radius: 15px;
+}
+/* popupform */
+
+.addCar__container {
+  display: none;
+  position: fixed;
+  top: 53%;
+  left: 50%;
+  border: 2px solid #999999;
+  border-radius: 14px;
+  z-index: 9;
+  background-color: rgb(226, 226, 226);
+  min-width: 400px;
+  max-width: 700px;
+  width: 60vw;
+  padding: 8px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#addCarForm {
+  width: 95%;
+  margin: 0 auto;
+}
+#addCarForm input {
+  width: 100%;
+  height: 40px;
+  margin: 8px 0;
+  border-radius: 15px;
+  background-color: #d4d3d3;
+  border: none;
+  font-size: medium;
+  font-weight: bold;
+  padding: 8px;
+  padding-left: 10px;
+}
+
+#addCarForm button {
+  background-color: #64b454;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+#addCarForm .cancel {
+  background-color: red;
+}
+
+#addCarForm button:hover {
+  background-color: hsl(110, 39%, 45%);
+}
+#addCarForm .cancel:hover {
+  background-color: hsl(0, 100%, 45%);
+}
+
+#addCarForm button {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}

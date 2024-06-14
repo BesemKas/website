@@ -1,0 +1,36 @@
+[07-Jun-2024 17:26:36 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/tru645/public_html/phpScripts/database.php on line 8
+[07-Jun-2024 17:33:04 UTC] PHP Warning:  mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home1/tru645/public_html/phpScripts/database.php on line 17
+[07-Jun-2024 17:33:04 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home1/tru645/public_html/phpScripts/database.php on line 17
+[10-Jun-2024 14:31:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function issset() in /home1/tru645/public_html/phpScripts/NotifyCallback.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 3
+[10-Jun-2024 15:14:49 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:16:37 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:18:31 UTC] PHP Warning:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:22:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home1/tru645/public_html/phpScripts/NotifyCallback.php:33
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:24:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home1/tru645/public_html/phpScripts/NotifyCallback.php:33
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:24:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home1/tru645/public_html/phpScripts/NotifyCallback.php:33
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 33
+[10-Jun-2024 15:27:39 UTC] PHP Warning:  require(/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php): failed to open stream: No such file or directory in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:27:39 UTC] PHP Fatal error:  require(): Failed opening required '/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:28:05 UTC] PHP Warning:  require(/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php): failed to open stream: No such file or directory in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:28:05 UTC] PHP Fatal error:  require(): Failed opening required '/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:28:39 UTC] PHP Warning:  require(/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php): failed to open stream: No such file or directory in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:28:39 UTC] PHP Fatal error:  require(): Failed opening required '/home1/tru645/public_html/phpScriptshttps://washmore.trueideonline.co.za/phpScripts/database.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 18
+[10-Jun-2024 15:38:02 UTC] PHP Fatal error:  Uncaught Error: Cannot pass parameter 3 by reference in /home1/tru645/public_html/phpScripts/NotifyCallback.php:24
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/NotifyCallback.php on line 24
+[10-Jun-2024 17:47:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home1/tru645/public_html/phpScripts/paymentKey.php:35
+Stack trace:
+#0 {main}
+  thrown in /home1/tru645/public_html/phpScripts/paymentKey.php on line 35
