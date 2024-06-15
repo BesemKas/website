@@ -1,99 +1,98 @@
 <?php
- //validate fields on server side if client side validation fails
+// Server-side validation for registration fields
 
- if (empty($_POST["Firstname"])) {
-     die("Name is Required");
- }
+// Check if the Firstname field is empty
+if (empty($_POST["Firstname"])) {
+    die("Name is Required");
+}
 
- if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-     // if not valid email, die
-     die("Valid email address is required");
- }
+// Validate the email address format
+if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    die("Valid email address is required");
+}
 
- if (strlen($_POST["password"]) < 8) {
-     // check that pw is min 8 char long
-     die("password must be atleast 8 characters long");
- }
+// Ensure the password is at least 8 characters long
+if (strlen($_POST["password"]) < 8) {
+    die("password must be at least 8 characters long");
+}
 
- if (!preg_match("/[a-z]/i", $_POST["password"])) {
-     //pregmatch checks if string contains pattern (a-z). i = case sensitive search
-     die("password must contain at least one lowercase letter");
- }
+// Check for at least one lowercase letter in the password
+if (!preg_match("/[a-z]/i", $_POST["password"])) {
+    die("password must contain at least one lowercase letter");
+}
 
- if (!preg_match("/[A-Z]/i", $_POST["password"])) {
-     die("password must contain at least one uppercase letter");
- }
+// Check for at least one uppercase letter in the password
+if (!preg_match("/[A-Z]/i", $_POST["password"])) {
+    die("password must contain at least one uppercase letter");
+}
 
- if (!preg_match("/[0-9]/i", $_POST["password"])) {
-     die("password must contain at least one number");
- }
+// Check for at least one number in the password
+if (!preg_match("/[0-9]/i", $_POST["password"])) {
+    die("password must contain at least one number");
+}
 
- if (!preg_match("/[^a-zA-Z0-9]/i", $_POST["password"])) {
-     //  check that at least one char is not a letter or number (must be special char)
-     die("password must contain at least one special character");
- }
+// Check for at least one special character in the password
+if (!preg_match("/[^a-zA-Z0-9]/i", $_POST["password"])) {
+    die("password must contain at least one special character");
+}
 
- if ($_POST["password"] !== $_POST["passwordCon"]) {
-     die("passwords must match");
- }
+// Ensure the password and confirmation password match
+if ($_POST["password"] !== $_POST["passwordCon"]) {
+    die("passwords must match");
+}
 
- $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT); // create a var to store the password as a hash value
+// Hash the password using a secure algorithm
+$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
- $mysqli = require __DIR__ . "/database.php"; //require the database connection file to get connection credentials
+// Include the database connection script
+$mysqli = require __DIR__ . "/database.php";
 
- //check if the email already exists in db
- $email = $_POST["email"];
+// Check if the email already exists in the database
+$email = $_POST["email"];
+$sql_checkemail = "SELECT * FROM account WHERE email = ?";
+$checkEmail = $mysqli->prepare($sql_checkemail);
+$checkEmail->bind_param("s", $email);
+$checkEmail->execute();
+$result = $checkEmail->get_result();
 
- $sql_checkemail = "SELECT * FROM account WHERE email = ?";
-
- $checkEmail = $mysqli->prepare($sql_checkemail);
-
- $checkEmail->bind_param("s", $email);
-
- $checkEmail->execute();
-
- $result = $checkEmail->get_result();
-
- if ($result->num_rows !== 0) {
-     die("this email is already taken.");
- } else {
-     $sql_insert = "INSERT INTO account(email, firstname,lastname,phone,passwordhash)
+// If an account with this email already exists, stop registration
+if ($result->num_rows !== 0) {
+    die("this email is already taken.");
+} else {
+    // Insert new account details into the database
+    $sql_insert = "INSERT INTO account(email, firstname, lastname, phone, passwordhash)
         VALUES (?,?,?,?,?)";
+    $stmt = $mysqli->stmt_init();
+    if (!$stmt->prepare($sql_insert)) {
+        die("SQL error: " . $mysqli->error);
+    }
+    $stmt->bind_param(
+        "sssss",
+        $_POST["email"],
+        $_POST["Firstname"],
+        $_POST["Lastname"],
+        $_POST["phoneNum"],
+        $password_hash
+    );
+    $stmt->execute();
 
-     $stmt = $mysqli->stmt_init();
+    // Start a new session and set session variables after successful registration
+    session_start();
+    $email = $_POST["email"];
+    $sql_getEmail = "SELECT * FROM account WHERE Email = ?";
+    $checkEmail = $mysqli->prepare($sql_getEmail);
+    $checkEmail->bind_param("s", $email);
+    $checkEmail->execute();
+    $result = $checkEmail->get_result();
+    $account = $result->fetch_assoc();
+    
+    // Regenerate session ID for security and set AccountID in session
+    session_regenerate_id(true);
+    $_SESSION["AccountID"] = $account["AccountID"];
 
-     if (!$stmt->prepare($sql_insert)) {
-         die("SQL error: " . $mysqli->error);
-     }
-
-     $stmt->bind_param(
-         "sssss",
-         $_POST["email"],
-         $_POST["Firstname"],
-         $_POST["Lastname"],
-         $_POST["phoneNum"],
-         $password_hash
-     );
-
-     $stmt->execute();
-     session_start();
-     // $_SESSION['login'] = ' ';
-     // header("Location: memberland.php");
-
-     $email = $_POST["email"];
-     $password = $_POST["password"];
-
-     $sql_getEmail = "SELECT * FROM account WHERE Email = ?";
-
-     $checkEmail = $mysqli->prepare($sql_getEmail);
-     $checkEmail->bind_param("s", $email);
-     $checkEmail->execute();
-
-     $result = $checkEmail->get_result(); //get the rows
-     $account = $result->fetch_assoc();
-     session_regenerate_id(true);
-     $_SESSION["AccountID"] = $account["AccountID"];
-     header("Location: ../selectplan.php");
-     exit();
- }
-
+    // Redirect to plan selection page after successful registration
+    header("Location: ../selectplan.php");
+    
+    // Terminate script execution after redirection
+    exit();
+}
