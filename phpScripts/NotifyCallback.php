@@ -46,11 +46,11 @@ if ( isset($_GET['success']) && $_GET['success'] === 'true') {
         echo "payment failed.";
     }
    
-    // Respond with an acknowledgment (optional)
+    // Respond with an acknowledgment
     http_response_code(200); // HTTP OK status
     echo "Callback received successfully.<br>";
 } else {
-    // Invalid request method (should be POST)
+    // Invalid request method 
     http_response_code(400); // Bad Request
     echo "Invalid request.";
 }

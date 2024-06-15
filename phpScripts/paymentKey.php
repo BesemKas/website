@@ -16,7 +16,7 @@ $notify_url="https://washmore.trueideonline.co.za/phpScripts/NotifyCallback.php"
 $command = "curl -X POST -u WashMoreUATAPI:C9BR6swOnXZfalA5VL1e0iGe0W https://services.callpay.com/api/v1/payment-key -d \"amount={$amount}&merchant_reference=testref123&success_url={$success_url}\"";
 $response = exec($command);
 
-// Parse the response and proceed with your logic
+// Parse the response
 $result = json_decode($response, true);
 
 // Extract individual components
