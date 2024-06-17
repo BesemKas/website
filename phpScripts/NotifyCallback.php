@@ -41,6 +41,8 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
         $stmt->bind_param("sisss", $transactionID, $account['AccountID'], $paymentKey, $merchant_ref, $status);
         $stmt->execute();
 
+        header("Location: ../Account.php");
+
     } else {
         // If payment failed, display an error message
         echo "payment failed.";
