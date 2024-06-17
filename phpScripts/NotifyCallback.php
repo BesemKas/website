@@ -51,6 +51,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
     // Send an HTTP OK response code and acknowledgment message
     http_response_code(200);
     echo "Callback received successfully.<br>";
+    exit;
 } else {
     // If the request is invalid, send an HTTP Bad Request response code and error message
     http_response_code(400);
